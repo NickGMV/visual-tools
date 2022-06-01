@@ -157,7 +157,7 @@ console.log('already built, no repeats')
 
 else{
 document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend", "<div id='help_box'></div>");
-document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend","<img src= 'https://github.com/NickGMV/visual-tools/blob/main/eyeicon.png' id='mvlogo'>")
+document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend","<img src= 'https://github.com/NickGMV/visual-tools/blob/main/eyeicon.png?raw=true' id='mvlogo'>")
 document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend", "<div class='hidden' id='tooltip2'><p>click the eye to hide/show tools</p></div>");
 var help_box = document.getElementById('help_box');
 
