@@ -26,6 +26,7 @@ var flagMagnifyCode =0;
 var flagMagnifyOutputs=0;
 var flagEnlarge = 0;
 var flagHighlightOutput = 0;
+var settings_flag = 0;
 
 function enlarge_markdown(){
     
@@ -180,46 +181,117 @@ settings.innerHTML +=`
 
 <div id = 'highlight_line_settings' class = 'subsettings'>
 <p> Change your line highlight colour </p>
-<input type="color" id="colorpicker" value="#0000ff">
+<input type="color" id="colorpicker1" value="#0000ff">
 </div>
 
 <div id = 'highlight_settings' class = 'subsettings'>
-<p> Change your line highlight colour </p>
-<input type="color" id="colorpicker" value="#0000ff">
+<p> Change your code cell highlight colour </p>
+<input type="color" id="colorpicker2" value="#0000ff">
 </div>
 
 <div id = 'output_enlarge_settings' class = 'subsettings'>
 <p> Change your magnification level </p>
-<input type="range" min="1" max="100" value="50" class="slider" id="magnify_slider">
+<input type="range" min="1" max="100" value="50" class="slider" id="output_mag_slider">
 </div>
 
 <div id = 'output_highlight_settings' class = 'subsettings'>
 <p> Change your output highlighting </p>
-<input type="color" id="colorpicker" value="#0000ff">
+<input type="color" id="colorpicker3" value="#0000ff">
+</div>
+
+<div id = 'output_highlight_settings' class = 'subsettings'>
+<p> Change your output font-color </p>
+<input type="color" id="colorpicker4" value="#0000ff">
 </div>
 
 <div id = 'Markdown_enlarge_settings' class = 'subsettings'>
 <p> Change your Mark down magnification </p>
-<input type="range" min="1" max="99" value="50" class="slider" id="magnify_slider">
+<input type="range" min="1" max="99" value="50" class="slider" id="markdown_slider">
 </div>
+
+<div id= "save_load_settings" class = "subsettings"><button id= "save_settings">save my preferences</button><button id="load">load my preferences</button></div>
 `
+//settings functions
+
+//for code cells
 
 // make magnify line settings work
 document.getElementById('magnify_slider').addEventListener('change',function(){
 var slider = document.getElementById('magnify_slider');
-window.alert(100 + parseInt(slider.value) +'%')
+//window.alert(100 + parseInt(slider.value) +'%')
 var r = document.querySelector(':root');
 //var rs = getComputedStyle(r);
 r.style.setProperty('--magnify-zoom', 100 + parseInt(slider.value) +'%' );
 })
 
-// make magnify code cells work
+// make magnify code cells settings work
 document.getElementById('cell_slider').addEventListener('change',function(){
 var slider = document.getElementById('cell_slider');
-window.alert(100 + parseInt(slider.value) +'%')
+//window.alert(100 + parseInt(slider.value) +'%')
 var r = document.querySelector(':root');
 //var rs = getComputedStyle(r);
 r.style.setProperty('--magnify-cell', 100 + parseInt(slider.value) +'%' );
+})
+
+// make highlight line settings work
+document.getElementById('colorpicker1').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker1');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--highlight_line_color', palette.value );
+})
+
+// make highlight code cell work
+document.getElementById('colorpicker2').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker2');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--highlight-color', palette.value);
+})
+
+
+//for outputs
+
+// make magnify output cells settings work
+document.getElementById('output_mag_slider').addEventListener('change',function(){
+var slider = document.getElementById('output_mag_slider');
+//window.alert(100 + parseInt(slider.value) +'%')
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--enlarge-size', 100 + parseInt(slider.value) +'%' );
+})
+
+// make highlight output cells highlight settings work
+document.getElementById('colorpicker3').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker3');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--highlight-output', palette.value );
+})
+
+// output cells font-colour selector
+document.getElementById('colorpicker4').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker4');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--font-highlight-output', palette.value );
+})
+
+
+
+//for markdowns
+
+// make magnify Markdown cells settings work
+document.getElementById('markdown_slider').addEventListener('change',function(){
+var slider = document.getElementById('markdown_slider');
+//window.alert(100 + parseInt(slider.value) +'%')
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--enlarge-markdowns', 100 + parseInt(slider.value) +'%' );
 })
 
 var help_box = document.getElementById('help_box');
@@ -257,7 +329,14 @@ document.getElementById('button1').addEventListener('click',function(){
     magnify_code();});
  
 document.getElementById('mvlogo').addEventListener('click',function(){  
-document.getElementById('help_box').classList.toggle('hidden');}); 
+document.getElementById('help_box').classList.toggle('hidden');
+if(settings_flag ==1){
+settings_flag=0;
+document.getElementById('settings').classList.toggle('hidden');
+}
+else{console.log('not hidden')}
+
+}); 
  
  
 document.getElementById('mvlogo').addEventListener('mouseover',function(){  
@@ -267,7 +346,15 @@ document.getElementById('mvlogo').addEventListener('mouseout',function(){
 document.getElementById('tooltip2').classList.toggle('hidden');});
 
 document.getElementById('cog').addEventListener('click',function(){
+
+if(settings_flag ==1){
+settings_flag=0;
 document.getElementById('settings').classList.toggle('hidden');
+}
+else{
+settings_flag =1;
+document.getElementById('settings').classList.toggle('hidden');
+}
 })
 
 
@@ -279,13 +366,14 @@ document.getElementById('settings').classList.toggle('hidden');
 
 
 <style id = 'styles'>
+
 :root {
 
 /* for code */
   --magnify-zoom: 130%;
   --magnify-cell: 120%;
   --highlight_line_color:yellow;
-  --highlight-color:#fcfaeb;
+  --highlight-color:#FFFF99;
   
   /* for outputs*/
   --enlarge-size:115%;
@@ -295,6 +383,11 @@ document.getElementById('settings').classList.toggle('hidden');
   /* for markdowns*/
   --enlarge-markdowns:120%;
 }
+
+
+
+
+
 
 .hidden{
 display:none;
@@ -315,7 +408,6 @@ color:blue;
 }
 
 #cog{
-float:right;
 position:fixed;
 top:21vh;
 left:95vw;
@@ -352,7 +444,8 @@ position:fixed;
 top:21vh;
 left:80vw;
 margin: 1vh 1vh 1vh  1vh;
-font-size:3vmin;}
+font-size:3vmin;
+max-width:16vw;}
 
 .clean_buttons{
 padding: 0px 0px 0px 0px;
@@ -433,13 +526,20 @@ border: 0.5vh solid #003b49;
 cursor: pointer;
 }
 
-*/ for code blocks */
-.highlighted :hover{
-background-color:var(--highlight-color);
-}
+
+
+
+
+
+/* for code blocks*/ 
+
 
 .highlighted_code div pre :hover{
 background-color:var(--highlight_line_color);
+}
+
+.highlighted :hover{
+background-color:var(--highlight-color);
 }
 
 .magnified_code div pre span:hover{
@@ -490,7 +590,24 @@ border-color:#003b49;
 borderwidth:0.1vh;
 left:30vw;
 top:20vh;
+overflow-y:scroll;
 }
+
+.subsettings{
+width:90%;
+height:9vh;
+margin-right: 2vw;
+margin-left:2vw;
+margin-top:2vh;
+float:left;
+font-size:max(2vmin, 6px);
+border-style:solid;
+padding: 1vmin;}
+
+#save_load_settings{
+width:80%;
+}
+
 
 </style>
 """)
