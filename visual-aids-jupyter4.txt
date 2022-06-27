@@ -1,0 +1,674 @@
+from IPython.display import HTML
+from IPython.display import Javascript
+
+from IPython.display import display
+#function to load settings file
+import os
+try:
+    base = os.path.abspath('./')
+    path = base+"\\profile.txt"
+    #print(path)
+    exec(open(path).read())
+    print('settings found initialising with personal preferences...')
+except:
+    print('no settings found initialising default version...')
+    profile = ["130%","120%","yellow","#FFFF99","115%","#FFFF99","purple","120%"]
+
+# Taken from https://stackoverflow.com/questions/31517194/how-to-hide-one-specific-cell-input-or-output-in-ipython-notebook
+
+    
+a = """<script>
+code_show=true; 
+function code_toggle() {
+    if (code_show){
+        $('div.cell.code_cell.rendered.selected div.input').hide();
+    } else {
+        $('div.cell.code_cell.rendered.selected div.input').show();
+    }
+    code_show = !code_show
+} 
+$( document ).ready(code_toggle);
+
+
+
+
+var flagHighlight=0;
+var flagHighlightCode = 0;
+var flagMagnifyCell = 0;
+var flagMagnifyCode =0;
+var flagMagnifyOutputs=0;
+var flagEnlarge = 0;
+var flagHighlightOutput = 0;
+var settings_flag = 0;
+
+function enlarge_markdown(){
+    
+if(flagEnlarge==0){
+flagEnlarges = 1;
+document.getElementById('button7').classList.toggle('active_button');
+var els = document.getElementsByClassName('text_cell');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('enlarged');}}
+else{
+flagEnlarge = 0;
+document.getElementById('button7').classList.toggle('active_button');
+var els = document.getElementsByClassName('text_cell');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('enlarged');
+}};};
+
+
+function magnify_outputs(){
+    
+if(flagMagnifyOutputs==0){
+flagMagnifyOutputs = 1;
+document.getElementById('button5').classList.toggle('active_button');
+var els = document.getElementsByClassName('output_wrapper');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('magnified_output');}}
+else{
+flagMagnifyOutputs = 0;
+document.getElementById('button5').classList.toggle('active_button');
+var els = document.getElementsByClassName('output_wrapper');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('magnified_output');
+}};};
+
+function magnify_output_lines(){
+    
+if(flagHighlightOutput==0){
+flagHighlightOutput = 1;
+document.getElementById('button6').classList.toggle('active_button');
+var els = document.getElementsByClassName('output_wrapper');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('magnified_output_lines');}}
+else{flagHighlightOutput = 0;
+document.getElementById('button6').classList.toggle('active_button');
+var els = document.getElementsByClassName('output_wrapper');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('magnified_output_lines');
+}};};
+
+
+function highlight_cell(){
+    
+if(flagHighlight==0){
+flagHighlight = 1;
+document.getElementById('button4').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('highlighted');}}
+else{flagHighlight = 0;
+document.getElementById('button4').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('highlighted');
+}};};
+
+
+function highlight_code(){   
+if(flagHighlightCode==0){
+
+flagHighlightCode = 1;
+document.getElementById('button3').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('highlighted_code');}}   
+else{flagHighlightCode = 0;
+document.getElementById('button3').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('highlighted_code');
+}};};
+
+function magnify_cell(){   
+if(flagMagnifyCell==0){
+flagMagnifyCell = 1;
+document.getElementById('button2').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('magnified_cell');}}   
+else{flagMagnifyCell = 0;
+document.getElementById('button2').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('magnified_cell');
+}};};
+
+function magnify_code(){   
+if(flagMagnifyCode==0){
+flagMagnifyCode = 1;
+document.getElementById('button1').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.toggle('magnified_code');}}   
+else{flagMagnifyCode = 0;
+document.getElementById('button1').classList.toggle('active_button');
+var els = document.getElementsByClassName('CodeMirror-lines');
+var i;
+for(i=0;i<els.length;i++){
+els[i].classList.remove('magnified_code');
+}};};
+
+
+function toggle_settings(){
+
+
+}
+var box1 = document.getElementById('help_box');
+var box2 = document.getElementById('settings');
+
+if(ispresent){
+//clean out for rebuild
+box1.remove()
+box2.remove()
+}
+else{}
+
+
+document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend", "<div id='help_box'></div>");
+document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend","<img src= 'https://github.com/NickGMV/visual-tools/blob/main/eyeicon.png?raw=true' id='mvlogo'>")
+document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend", "<div class='hidden' id='tooltip2'><p>click the eye to hide/show tools</p></div>");
+document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterend","<div id = 'settings' class = 'hidden settings'></div>")
+
+var settings = document.getElementById('settings');
+
+settings.innerHTML +=`
+<div id = 'magnify_settings' class = 'subsettings'>
+<p> Change your magnification level </p>
+<input type="range" min="1" max="99" value="50" class="slider" id="magnify_slider">
+</div>
+
+<div id = 'magnify_cell' class = 'subsettings'>
+<p> Change your enlargement level </p>
+<input type="range" min="1" max="99" value="50" class="slider" id="cell_slider"></div>
+
+<div id = 'highlight_line_settings' class = 'subsettings'>
+<p> Change your line highlight colour </p>
+<input type="color" id="colorpicker1" value="#0000ff">
+</div>
+
+<div id = 'highlight_settings' class = 'subsettings'>
+<p> Change your code cell highlight colour </p>
+<input type="color" id="colorpicker2" value="#0000ff">
+</div>
+
+<div id = 'output_enlarge_settings' class = 'subsettings'>
+<p> Change your magnification level </p>
+<input type="range" min="1" max="100" value="50" class="slider" id="output_mag_slider">
+</div>
+
+<div id = 'output_highlight_settings' class = 'subsettings'>
+<p> Change your output highlighting </p>
+<input type="color" id="colorpicker3" value="#0000ff">
+</div>
+
+<div id = 'output_highlight_settings' class = 'subsettings'>
+<p> Change your output font-color </p>
+<input type="color" id="colorpicker4" value="#0000ff">
+</div>
+
+<div id = 'Markdown_enlarge_settings' class = 'subsettings'>
+<p> Change your Mark down magnification </p>
+<input type="range" min="1" max="99" value="50" class="slider" id="markdown_slider">
+</div>
+
+<div id= "save_load_settings" class = "subsettings"><button id= "save_settings">save my preferences</button><button id="load">load my preferences</button></div>
+`
+//settings functions
+
+//for code cells
+
+// make magnify line settings work
+document.getElementById('magnify_slider').addEventListener('change',function(){
+var slider = document.getElementById('magnify_slider');
+//window.alert(100 + parseInt(slider.value) +'%')
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--magnify-zoom', 100 + parseInt(slider.value) +'%' );
+})
+
+// make magnify code cells settings work
+document.getElementById('cell_slider').addEventListener('change',function(){
+var slider = document.getElementById('cell_slider');
+//window.alert(100 + parseInt(slider.value) +'%')
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--magnify-cell', 100 + parseInt(slider.value) +'%' );
+})
+
+// make highlight line settings work
+document.getElementById('colorpicker1').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker1');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--highlight_line_color', palette.value );
+})
+
+// make highlight code cell work
+document.getElementById('colorpicker2').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker2');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--highlight-color', palette.value);
+})
+
+
+//for outputs
+
+// make magnify output cells settings work
+document.getElementById('output_mag_slider').addEventListener('change',function(){
+var slider = document.getElementById('output_mag_slider');
+//window.alert(100 + parseInt(slider.value) +'%')
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--enlarge-size', 100 + parseInt(slider.value) +'%' );
+})
+
+// make highlight output cells highlight settings work
+document.getElementById('colorpicker3').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker3');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--highlight-output', palette.value );
+})
+
+// output cells font-colour selector
+document.getElementById('colorpicker4').addEventListener('change',function(){
+var palette = document.getElementById('colorpicker4');
+//window.alert(palette.value)
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--font-highlight-output', palette.value );
+})
+
+//for markdowns
+
+// make magnify Markdown cells settings work
+document.getElementById('markdown_slider').addEventListener('change',function(){
+var slider = document.getElementById('markdown_slider');
+//window.alert(100 + parseInt(slider.value) +'%')
+var r = document.querySelector(':root');
+//var rs = getComputedStyle(r);
+r.style.setProperty('--enlarge-markdowns', 100 + parseInt(slider.value) +'%' );
+})
+
+// save button
+document.getElementById('save_load_settings').addEventListener('click',function(){
+var r = window.getComputedStyle(document.documentElement);
+//window.alert(r);
+var setting0 = r.getPropertyValue('--magnify-zoom');
+//window.alert(setting0);
+var setting1 = r.getPropertyValue('--magnify-cell');
+//window.alert(setting1);
+var setting2 = r.getPropertyValue('--highlight_line_color');
+//window.alert(setting2);
+var setting3 = r.getPropertyValue('--highlight-color');
+//window.alert(setting3);
+
+var setting4 = r.getPropertyValue('--enlarge-size');
+//window.alert(setting4);
+var setting5 = r.getPropertyValue('--highlight-output');
+//window.alert(setting5);
+var setting6 = r.getPropertyValue('--font-highlight-output');
+//window.alert(setting6);
+var setting7 = r.getPropertyValue('--enlarge-markdowns');
+//window.alert(setting7);
+
+//window.alert('all settings in ')
+
+var a = `
+#Code below is loaded to your clipboard, paste to blank code cell and run to save preferences:
+
+import os
+
+base = os.path.abspath('./')
+print(base)
+with open (f'\{base\}\\\\profile.txt',"w")as p:
+    p.write("profile = ['${setting0}','${setting1}','${setting2}','${setting3}','${setting4}','${setting5}','${setting6}','${setting7}']")
+    
+`
+prompt(a);
+
+});
+
+var help_box = document.getElementById('help_box');
+
+help_box.classList.add('floater');
+help_box.innerHTML='<img id = "cog" src = "https://raw.githubusercontent.com/NickGMV/visual-tools/main/Simpleicons_Interface_gear-wheel-with-cogs.svg">'
+help_box.innerHTML += "<h2 id='heading'><b>Visual tools</b></h2><button id='button1' class='clean_buttons'>Magnify lines </button><button id='button2'class = 'clean_buttons' >Enlarge cells</button><button id='button3' class = 'clean_buttons' >highlight lines</button><button id='button4' class = 'clean_buttons' >highlight cell</button>";
+help_box.innerHTML +="<button id='button5' class='clean_buttons'>Enlarge</button><button id='button6' class='clean_buttons'>Highlight</button>"
+help_box.innerHTML += "<button id='button7' class='clean_buttons'>enlarge</button"
+help_box.innerHTML+= "<p class='sections' id='code_heading'><b>Code</b></p>"
+help_box.innerHTML+= "<p class='sections' id='output_heading'><b>Outputs</b></p>"
+help_box.innerHTML+= "<p class='sections' id='markdown_heading'><b>Markdowns</b></p>"
+help_box.innerHTML +="<p id='credit'>logo credit to https://www.flaticon.com/free-icon/eye-open_25186 <br>  used under open license: Attribution 3.0 Unported (CC BY 3.0)<br> Coded by N.Griffiths employed by Muliverse </p>"
+document.body.appendChild(help_box);
+
+document.getElementById('button7').addEventListener('click',function(){
+   enlarge_markdown();});
+    
+document.getElementById('button6').addEventListener('click',function(){
+    magnify_output_lines();});
+
+document.getElementById('button5').addEventListener('click',function(){
+    magnify_outputs();});
+    
+document.getElementById('button4').addEventListener('click',function(){
+    highlight_cell();});
+
+document.getElementById('button3').addEventListener('click',function(){
+    highlight_code();});
+
+document.getElementById('button2').addEventListener('click',function(){
+    magnify_cell();});
+
+document.getElementById('button1').addEventListener('click',function(){
+    magnify_code();});
+ 
+document.getElementById('mvlogo').addEventListener('click',function(){  
+document.getElementById('help_box').classList.toggle('hidden');
+if(settings_flag ==1){
+settings_flag=0;
+document.getElementById('settings').classList.toggle('hidden');
+}
+else{console.log('not hidden')}
+
+}); 
+ 
+ 
+document.getElementById('mvlogo').addEventListener('mouseover',function(){  
+document.getElementById('tooltip2').classList.toggle('hidden');});
+
+document.getElementById('mvlogo').addEventListener('mouseout',function(){  
+document.getElementById('tooltip2').classList.toggle('hidden');});
+
+document.getElementById('cog').addEventListener('click',function(){
+
+if(settings_flag ==1){
+settings_flag=0;
+document.getElementById('settings').classList.toggle('hidden');
+}
+else{
+settings_flag =1;
+document.getElementById('settings').classList.toggle('hidden');
+}
+})
+
+
+
+// uncomment once finished}
+
+</script>
+<a id='boilerplate' href="javascript:code_toggle()">change js running visual-aids</a>.
+
+
+<style id = 'styles'>
+
+:root
+           
+{""" 
+           
+b = f"""
+/* for code */
+  --magnify-zoom: {profile[0]};
+  --magnify-cell: {profile[1]};
+  --highlight_line_color:{profile[2]};
+  --highlight-color:{profile[3]};
+  
+  /* for outputs*/
+  --enlarge-size:{profile[4]};
+  --highlight-output:{profile[5]};
+  --font-highlight-output:{profile[6]};
+  
+  /* for markdowns*/
+  --enlarge-markdowns:{profile[7]};
+"""  
+           
+c = """}
+
+
+
+
+
+
+.hidden{
+display:none;
+}
+
+#credit{
+position: fixed;
+top:65.5vh;
+left:81vw;
+font-size:0.9vmin;
+}
+#boilerplate{
+color:white;
+}
+
+#boilerplate:hover{
+color:blue;
+}
+
+#cog{
+position:fixed;
+top:21vh;
+left:95vw;
+width:3vw;
+height:3vh;
+
+}
+#tooltip2{
+position:fixed;
+z-index:1001;
+left:80vw;
+top:18vh;
+font-size:1.5vh;
+background-color:white;
+}
+
+.floater{
+background-color:#FFFFFF;
+color:#003b49;
+border-style:solid;
+border-color:#003b49;
+borderwidth:0.1vh;
+z-index:1000;
+position:fixed;
+left: 80vw;
+Top: 20vh;
+height: 53vh;
+width: 18vw;
+
+}
+
+#heading{
+position:fixed;
+top:21vh;
+left:80vw;
+margin: 1vh 1vh 1vh  1vh;
+font-size:3vmin;
+max-width:16vw;}
+
+.clean_buttons{
+padding: 0px 0px 0px 0px;
+background-color:#d0d3d4;
+color:#003b49;
+cursor: pointer;
+width:8vw;
+height:6vh;
+font-size:2vmin;
+border-width:0.1vh;
+}
+#button1{
+position:fixed;
+top:31vh;
+left:80.5vw;
+}
+#button2{
+position:fixed;
+top:31vh;
+left:89vw;
+}
+#button3{
+position:fixed;
+top:38vh;
+left:80.5vw;
+}
+#button4{
+position:fixed;
+top:38vh;
+left:89vw;
+}
+#button5{
+position:fixed;
+top:48.5vh;
+left:80.5vw;
+}
+#button6{
+position:fixed;
+top:48.5vh;
+left:89vw;
+}
+#button7{
+position:fixed;
+top:58vh;
+left: 84vw;
+}
+.active_button{
+background:#003b49;
+color:#d0d3d4;
+}
+
+.sections{
+font-size: 2vmin;
+left:82vw;
+}
+#code_heading{
+position:fixed;
+top:28vh;
+}
+#output_heading{
+position:fixed;
+top:45vh;
+}
+#markdown_heading{
+position:fixed;
+top:55vh;
+}
+
+#mvlogo{
+width:18vw;
+height:8vh;
+object-fit: cover;
+position:fixed;
+z-index:1000;
+left: 80vw;
+top: 10vh;
+border: 0.5vh solid #003b49;
+cursor: pointer;
+}
+
+
+
+
+
+
+/* for code blocks*/ 
+
+
+.highlighted_code div pre :hover{
+background-color:var(--highlight_line_color);
+}
+
+.highlighted :hover{
+background-color:var(--highlight-color);
+}
+
+.magnified_code div pre span:hover{
+margin-top:3vh;
+margin-bottom:3vh;
+height:30px;
+width:auto;
+font-size: var(--magnify-zoom) ;
+}
+
+.magnified_cell div pre{
+padding: 6px 0px 6px 0px;
+}
+
+.magnified_cell div{
+font-size:var(--magnify-cell);
+line-height:var(--magnify-cell);
+}
+
+/*for outputs*/
+
+.magnified_output{
+font-size: var(--enlarge-size);
+}
+
+.magnified_output_lines :hover{
+background-color:var(--highlight-output);
+color:var(--font-highlight-output);
+
+}
+
+/* for markdowns */
+.enlarged *  {
+font-size:var(--enlarge-markdowns);
+line-height:var(--enlarge-markdowns);
+
+}
+
+.settings{
+width:50vw;
+height:53vh;
+position:fixed;
+z-index:10001;
+background-color:#FFFFFF;
+color:#003b49;
+border-style:solid;
+border-color:#003b49;
+borderwidth:0.1vh;
+left:30vw;
+top:20vh;
+overflow-y:scroll;
+}
+
+.subsettings{
+width:90%;
+height:9vh;
+margin-right: 2vw;
+margin-left:2vw;
+margin-top:2vh;
+float:left;
+font-size:max(2vmin, 6px);
+border-style:solid;
+padding: 1vmin;}
+
+#save_load_settings{
+width:80%;
+}
+
+
+</style>
+"""
+tag = HTML(a+b+c)
+display(tag)
