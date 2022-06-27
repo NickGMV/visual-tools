@@ -682,10 +682,10 @@ e = """
 var sliders = document.getElementsByClassName('subsettings');
 for (let i=0;i<sliders.length;i++){
 
-try {
+if(parseInt({profile[i]}){
   sliders[i].lastElementChild.value = `${parseInt(profile[i].replace('%',''))-100}`
 }
-catch(err) {
+else {
   sliders[i].lastElementChild.value = `${profile[i]}`
 }
 
