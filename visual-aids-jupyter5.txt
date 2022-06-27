@@ -680,7 +680,7 @@ width:80%;
 e = """
 <script>
 var sliders = document.getElementsByClassName('subsettings');
-for (i;i++;i<sliders.length()){
+for (let i=0;i<sliders.length;i++){
 sliders[i].value = `${profile[i]}`
 }
 
