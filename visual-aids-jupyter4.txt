@@ -345,7 +345,7 @@ with open (f'\{base\}\\\\profile.txt',"w")as p:
     
 `
 //prompt(a);
-navigator.clipboard.writeText
+navigator.clipboard.writeText(a);
 });
 
 var help_box = document.getElementById('help_box');
