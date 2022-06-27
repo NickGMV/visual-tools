@@ -171,7 +171,7 @@ function toggle_settings(){
 var box1 = document.getElementById('help_box');
 var box2 = document.getElementById('settings');
 
-if(ispresent){
+if(box1){
 //clean out for rebuild
 box1.remove()
 box2.remove()
