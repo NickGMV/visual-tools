@@ -234,7 +234,7 @@ settings.innerHTML +=`
 </div>
 
 <div id= "save_load_settings" class = "buttons">
-//<button id= "save_settings">save my preferences</button><button id="load">load my preferences</button>
+<!--<button id= "save_settings">save my preferences</button><button id="load">load my preferences</button>-->
 Save your settings
 </div>
 `
