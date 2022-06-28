@@ -233,7 +233,10 @@ settings.innerHTML +=`
 <input type="range" min="1" max="99" value="50" class="slider" id="markdown_slider">
 </div>
 
-<div id= "save_load_settings" class = "buttons"><button id= "save_settings">save my preferences</button><button id="load">load my preferences</button></div>
+<div id= "save_load_settings" class = "buttons">
+//<button id= "save_settings">save my preferences</button><button id="load">load my preferences</button>
+Save your settings
+</div>
 `
 //settings functions
 
@@ -318,10 +321,10 @@ r.style.setProperty('--enlarge-markdowns', 100 + parseInt(slider.value) +'%' );
 
 // save button
 //previous working version
-//document.getElementById('save_load_settings').addEventListener('click',function(){
+document.getElementById('save_load_settings').addEventListener('click',function(){
 
-document.getElementById('save_settings').addEventListener('click',function(){
-window.alert('new_verison');
+//document.getElementById('save_settings').addEventListener('click',function(){
+window.alert('newest_verison');
 var r = window.getComputedStyle(document.documentElement);
 //window.alert(r);
 var setting0 = r.getPropertyValue('--magnify-zoom');
