@@ -233,7 +233,7 @@ settings.innerHTML +=`
 <input type="range" min="1" max="99" value="50" class="slider" id="markdown_slider">
 </div>
 
-<div id= "save_load_settings" class = "subsettings"><button id= "save_settings">save my preferences</button><button id="load">load my preferences</button></div>
+<div id= "save_load_settings" class = "buttons"><button id= "save_settings">save my preferences</button><button id="load">load my preferences</button></div>
 `
 //settings functions
 
@@ -354,7 +354,11 @@ with open (f'\{base\}\\\\profile.txt',"w")as p:
 //prompt(a);
 navigator.clipboard.writeText(a);
 });
+//  load button
 
+document.getElementById('load').addEventListener('click',function(){
+location.reload();
+});
 var help_box = document.getElementById('help_box');
 
 help_box.classList.add('floater');
@@ -669,6 +673,18 @@ float:left;
 font-size:max(2vmin, 6px);
 border-style:solid;
 padding: 1vmin;}
+
+.buttons{
+width:90%;
+height:9vh;
+margin-right: 2vw;
+margin-left:2vw;
+margin-top:2vh;
+float:left;
+font-size:max(2vmin, 6px);
+border-style:solid;
+padding: 1vmin;}
+
 
 #save_load_settings{
 width:80%;
