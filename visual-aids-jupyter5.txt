@@ -333,8 +333,8 @@ var setting1 = r.getPropertyValue('--magnify-cell');
 //window.alert(setting1);
 var setting2 = r.getPropertyValue('--highlight_line_color');
 window.alert(setting2);
-//var setting3 = r.getPropertyValue('--highlight-color');
-window.alert(setting3);
+var setting3 = r.getPropertyValue('--highlight-color');
+//window.alert(setting3);
 
 var setting4 = r.getPropertyValue('--enlarge-size');
 //window.alert(setting4);
