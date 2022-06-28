@@ -321,13 +321,13 @@ document.getElementById('save_load_settings').addEventListener('click',function(
 var r = window.getComputedStyle(document.documentElement);
 //window.alert(r);
 var setting0 = r.getPropertyValue('--magnify-zoom');
-//window.alert(setting0);
+window.alert(setting0);
 var setting1 = r.getPropertyValue('--magnify-cell');
-//window.alert(setting1);
+window.alert(setting1);
 var setting2 = r.getPropertyValue('--highlight_line_color');
-//window.alert(setting2);
+window.alert(setting2);
 var setting3 = r.getPropertyValue('--highlight-color');
-//window.alert(setting3);
+window.alert(setting3);
 
 var setting4 = r.getPropertyValue('--enlarge-size');
 //window.alert(setting4);
@@ -364,9 +364,9 @@ navigator.clipboard.writeText(a);
 });
 //  load button
 
-document.getElementById('load').addEventListener('click',function(){
+//document.getElementById('load').addEventListener('click',function(){
 //location.reload();
-});
+//});
 
 
 
