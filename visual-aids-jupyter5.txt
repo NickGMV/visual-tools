@@ -317,7 +317,10 @@ r.style.setProperty('--enlarge-markdowns', 100 + parseInt(slider.value) +'%' );
 })
 
 // save button
-document.getElementById('save_load_settings').addEventListener('click',function(){
+//previous working version
+//document.getElementById('save_load_settings').addEventListener('click',function(){
+
+document.getElementById('save_settings').addEventListener('click',function(){
 var r = window.getComputedStyle(document.documentElement);
 //window.alert(r);
 var setting0 = r.getPropertyValue('--magnify-zoom');
