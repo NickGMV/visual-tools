@@ -20,15 +20,16 @@ d = f"""
 
 <script>
 var profile = {profile}
-document.addEventListener('DOMNodeInserted',()=>{
-console.log('ahhahahahah');
-
-})
 </script>
 """
 
 
 a = """<script>
+
+document.addEventListener('DOMNodeInserted',()=>{
+console.log('ahhahahahah');
+
+});
 //code_show=true; 
 //function code_toggle() {
     //if (code_show){
