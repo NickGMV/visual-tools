@@ -324,7 +324,7 @@ r.style.setProperty('--enlarge-markdowns', 100 + parseInt(slider.value) +'%' );
 document.getElementById('save_load_settings').addEventListener('click',function(){
 
 //document.getElementById('save_settings').addEventListener('click',function(){
-window.alert('newest_verison');
+//window.alert('newest_version');
 var r = window.getComputedStyle(document.documentElement);
 //window.alert(r);
 var setting0 = r.getPropertyValue('--magnify-zoom');
@@ -348,13 +348,13 @@ var setting7 = r.getPropertyValue('--enlarge-markdowns');
 //window.alert('all settings in ')
 
 var update_message = `
-# 1 => This code will create a small text file on your PC to store your preferences
+# 1 => This code will create a small text file on your PC to store your preferences (automatic)
 
-# 2 => This code will print the file path to where this file is stored, you can delete it at any time
+# 2 => This code will print the file path to where this file is stored, so you can find and delete it at any time(automatic)
 
-# 3 => To run this update for all subsequent notebboks simply run this cell in jupyter
+# 3 => To run this update for all subsequent notebooks simply run this code in a cell in jupyter
 
-# 4 => To make have changes reflected in this notebook rerun the cell with the visual aids tool in it
+# 4 => To make have changes reflected in this notebook rerun the cell that you used to start this tool
 
 # 5 => Once steps 1-4 are complete this cell can be deleted
 
@@ -366,16 +366,8 @@ with open (f'\{base\}\\\\profile.txt',"w")as p:
     p.write("profile = ['${setting0}','${setting1}','${setting2}','${setting3}','${setting4}','${setting5}','${setting6}','${setting7}']")
     
 `
-prompt("Python code to update your personal preferences is copied to your clipboard run it in a blank cell to update...",update_message);
-navigator.clipboard.writeText(update_message);
+prompt("Press "ctrl + c" to copy the code below, then paste it in a cell and follow instructions to save your preferences......",update_message);
 });
-//  load button
-
-//document.getElementById('load').addEventListener('click',function(){
-//location.reload();
-//});
-
-
 
 var help_box = document.getElementById('help_box');
 
