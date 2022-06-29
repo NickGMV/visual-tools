@@ -10,6 +10,7 @@ try:
     #print(path)
     exec(open(path).read())
     print('settings found initialising with personal preferences...')
+    print(profile)
 except:
     print('no settings found initialising default version...')
     profile = ["130%","120%","yellow","#FFFF99","115%","#FFFF99","purple","120%"]
@@ -767,5 +768,5 @@ else {
 
 </script>
 """
-tag = HTML(a+b+c+d+e)
+tag = HTML(d+a+b+c+e)
 display(tag)
