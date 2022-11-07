@@ -415,7 +415,7 @@ help_box.innerHTML += "<button id='button7' class='clean_buttons'>enlarge</butto
 help_box.innerHTML+= "<p class='sections' id='code_heading'><b>Code</b></p>"
 help_box.innerHTML+= "<p class='sections' id='output_heading'><b>Outputs</b></p>"
 help_box.innerHTML+= "<p class='sections' id='markdown_heading'><b>Markdowns</b></p>"
-help_box.innerHTML +="<p id='credit'>logo credit to https://www.flaticon.com/free-icon/eye-open_25186 <br>  used under open license: Attribution 3.0 Unported (CC BY 3.0)<br> Coded by N.Griffiths employed by Muliverse </p>"
+help_box.innerHTML +="<p id='credit'>logo credit to https://www.flaticon.com/free-icon/eye-open_25186 <br>  used under open license: Attribution 3.0 Unported (CC BY 3.0)<br> Coded by N.Griffiths employed by Multiverse </p>"
 document.body.appendChild(help_box);
 
 document.getElementById('button7').addEventListener('click',function(){
