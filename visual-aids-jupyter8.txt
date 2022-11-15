@@ -11,7 +11,7 @@ try:
     #print(path)
     exec(open(path).read())
     print('settings found initialising with personal preferences...')
-    print(profile)
+    #print(profile)
 except:
     print('no settings found initialising default version...')
     profile = ["130%","120%","yellow","#FFFF99","115%","#FFFF99","purple","120%"]
@@ -473,7 +473,7 @@ document.getElementById('settings').classList.toggle('hidden');
 // uncomment once finished}
 
 </script>
-<a id='boilerplate' href="javascript:code_toggle()">change js running visual-aids</a>.
+<!--<a id='boilerplate' href="javascript:code_toggle()">change js running visual-aids</a>.-->
 
 
 <style id = 'styles'>
